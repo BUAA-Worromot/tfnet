@@ -36,6 +36,7 @@ class Train:
 
         self._set_rets_path()
         self._create_results_dirs()
+        self.print_run_params()
 
         device = self._get_device()
         model = self._get_model().to(device)
@@ -333,3 +334,9 @@ class Train:
         optimizer.zero_grad()
 
         return total_loss_seg, total_loss_dec, total_loss, total_correct
+
+
+    def print_run_params(self):
+        for l in sorted(map(lambda e: e[0] + ":" + str(e[1]) + "\n", self.cfg.get_as_dict().items())):
+            k, v = l.split(":")
+            self._log(f"{k:25s} : {str(v.strip())}")

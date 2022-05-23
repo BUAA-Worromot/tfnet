@@ -57,8 +57,10 @@ class Config:
             raise Exception("数据集不存在，名字打错了")
 
     def merge_from_args(self, args):
-        self.gpu = args.gpu
-        self.epochs = args.epochs
+        if args.gpu:
+            self.gpu = args.gpu
+        if args.epochs:
+            self.epochs = args.epochs
         if args.train_seg:
             self.train_mode = "seg"
         elif args.train_dec:
@@ -106,3 +108,4 @@ class Config:
             'input_h': self.input_h,
             'input_c': self.input_c,
         }
+        return params

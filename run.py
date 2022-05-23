@@ -15,8 +15,8 @@ def parse_args():
     parser.add_argument('--train_seg', type=str, required=False, help="train part")
     parser.add_argument('--train_dec', type=str, required=False, help="train part")
     parser.add_argument('--train_total', type=str, required=False, help="train part")
-
-    return parser
+    args = parser.parse_args()
+    return args
 
 if __name__ == '__main__':
     args = parse_args()

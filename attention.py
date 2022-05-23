@@ -6,8 +6,8 @@ __all__ = ["Patten", "Catten"]
 
 
 class Patten(nn.Module):
-    def __int__(self, in_dim, n):
-        super(Patten, self).__int__()
+    def __init__(self, in_dim, n):
+        super(Patten, self).__init__()
         self.in_channel = in_dim
 
         self.query_conv = nn.Conv2d(in_channels=in_dim, out_channels=in_dim // n, kernel_size=1)
@@ -33,8 +33,8 @@ class Patten(nn.Module):
 
 
 class Catten(nn.Module):
-    def __int__(self, in_dim):
-        super(Catten, self).__int__()
+    def __init__(self, in_dim):
+        super(Catten, self).__init__()
         self.channel_in = in_dim
 
         self.gamma = nn.Parameter(torch.zeros(1))
