@@ -64,10 +64,12 @@ class Train:
         return tfnet
 
     def _get_optimizer(self, model):
-        return torch.optim.SGD([
-            {"params": model.patten.parameters(), "lr": self.cfg.learn_rate_seg}
-        ],
-            lr=self.cfg.learn_rate)
+        # return torch.optim.SGD([
+        #     {"params": model.patten.parameters(), "lr": self.cfg.learn_rate_seg}
+        # ],
+        #     lr=self.cfg.learn_rate)
+        return torch.optim.SGD(model.parameters(), self.cfg.LEARNING_RATE)
+
 
     def _train_model(self, device, model, train_loader, criterion_seg, criterion_dec, optimizer, test_loader,
                      tensorboard_writer):
